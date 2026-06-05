@@ -6,8 +6,8 @@ import { cloudinary } from "../config/cloudinary.js";
 import { Generation } from "../models/Generation.js";
 import { Post } from "../models/Post.js";
 
-
 // Helper to poll Leonardo.ai
+
 const pollLeonardoJob = async (generationId: string, apiKey: string) : Promise<string>=>{
     const maxRetries = 20;
     const delay = 5000;
