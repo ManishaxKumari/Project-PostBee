@@ -1,4 +1,4 @@
-import { ArrowRightIcon, DotIcon, CheckCircle2Icon } from "lucide-react";
+import { ArrowRightIcon, DotIcon } from "lucide-react";
 
 // Grid background like the honeybee reference
 const gridBg =
@@ -51,13 +51,13 @@ export default function Hero() {
                 <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                     <a
                         href="/login"
-                        className="bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-full px-8 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#fff] hover:shadow-[3px_3px_0_0_#fff] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
+                        className="bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-full px-8 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#fff] hover:shadow-[3px_3px_0_0_#fff] hover:translate-x-0.75 hover:translate-y-0.75 transition-all w-full sm:w-auto justify-center"
                     >
                         Start the hive <ArrowRightIcon className="size-4" />
                     </a>
                     <a
                         href="#how-it-works"
-                        className="bg-white text-black font-extrabold border-[3px] border-black rounded-full px-8 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
+                        className="bg-white text-black font-extrabold border-[3px] border-black rounded-full px-8 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] hover:translate-x-0.75 hover:translate-y-0.75 transition-all w-full sm:w-auto justify-center"
                     >
                         How its works
                     </a>
@@ -76,10 +76,10 @@ export default function Hero() {
                 <div className="rounded-t-[28px] overflow-hidden border-[3px] border-b-0 border-black shadow-[10px_-4px_0_0_#000] bg-white">
                     {/* Browser chrome */}
                     <div className="flex items-center gap-2 px-4 py-3 bg-yellow-300 border-b-[3px] border-black">
-                        <div className="size-3.5 rounded-full bg-[#FF6B6B] border-[2px] border-black" />
-                        <div className="size-3.5 rounded-full bg-yellow-400 border-[2px] border-black" />
-                        <div className="size-3.5 rounded-full bg-[#6EE7B7] border-[2px] border-black" />
-                        <div className="flex-1 mx-4 h-6 max-w-xs bg-white rounded-md border-[2px] border-black" />
+                        <div className="size-3.5 rounded-full bg-[#FF6B6B] border-2 border-black" />
+                        <div className="size-3.5 rounded-full bg-yellow-400 border-2 border-black" />
+                        <div className="size-3.5 rounded-full bg-[#6EE7B7] border-2 border-black" />
+                        <div className="flex-1 mx-4 h-6 max-w-xs bg-white rounded-md border-2 border-black" />
                     </div>
 
                     {/* Content */}

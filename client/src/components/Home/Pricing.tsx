@@ -60,7 +60,7 @@ export default function Pricing() {
 
                             <a
                                 href="#"
-                                className={`mt-auto text-center font-extrabold text-sm px-6 py-3.5 rounded-full border-[2.5px] border-black shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all ${
+                                className={`mt-auto text-center font-extrabold text-sm px-6 py-3.5 rounded-full border-[2.5px] border-black shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all ${
                                     plan.highlight ? "bg-black text-yellow-400" : "bg-white text-black"
                                 }`}
                             >

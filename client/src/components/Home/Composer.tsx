@@ -54,7 +54,7 @@ export default function Composer() {
                             <button
                                 key={t.label}
                                 type="button"
-                                className={`px-4 py-2 rounded-full border-[2.5px] border-black font-extrabold text-sm shadow-[3px_3px_0_0_#000] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[2px_2px_0_0_#000] ${
+                                className={`px-4 py-2 rounded-full border-[2.5px] border-black font-extrabold text-sm shadow-[3px_3px_0_0_#000] transition-all hover:translate-x-px hover:translate-y-px hover:shadow-[2px_2px_0_0_#000] ${
                                     t.active
                                         ? "bg-[#FF6B6B] text-white"
                                         : "bg-white text-black"
@@ -68,7 +68,7 @@ export default function Composer() {
                     {/* Generate */}
                     <button
                         type="button"
-                        className="mt-6 w-full bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-2xl py-4 inline-flex items-center justify-center gap-2 shadow-[5px_5px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0_0_#000] transition-all"
+                        className="mt-6 w-full bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-2xl py-4 inline-flex items-center justify-center gap-2 shadow-[5px_5px_0_0_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#000] transition-all"
                     >
                         <SparklesIcon className="size-5" /> Generate
                     </button>

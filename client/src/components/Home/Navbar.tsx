@@ -22,7 +22,7 @@ export default function Navbar() {
                     </Link>
                     <Link
                         to="/login"
-                        className="flex items-center gap-1.5 text-sm font-bold bg-[#FF6B6B] text-white border-[2.5px] border-black px-4 py-2 rounded-full shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                        className="flex items-center gap-1.5 text-sm font-bold bg-[#FF6B6B] text-white border-[2.5px] border-black px-4 py-2 rounded-full shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
                     >
                         Start free <ArrowRightIcon className="size-3.5" />
                     </Link>

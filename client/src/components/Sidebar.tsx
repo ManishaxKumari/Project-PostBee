@@ -24,7 +24,7 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
 
     return (
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-            <nav className="relative flex items-center gap-1 sm:gap-2 bg-white border-[3px] border-black rounded-full shadow-[0_10px_40px_-10px_rgba(0,0,0,0.25)] px-3 py-2 border border-slate-100">
+            <nav className="relative flex items-center gap-1 sm:gap-2 bg-white border-3 border-black rounded-full shadow-[0_10px_40px_-10px_rgba(0,0,0,0.25)] px-3 py-2">
                 {navItems.map((item) => {
                     const isActive = location.pathname === item.path
                     const showTip = hovered === item.name
@@ -66,7 +66,7 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
                             {user?.name || 'Account'}
                         </div>
                     )}
-                    <div className="size-11 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center text-white text-sm font-medium border-[3px] border-black">
+                    <div className="size-11 rounded-full bg-linear-to-br from-yellow-400 to-yellow-500 flex items-center justify-center text-white text-sm font-medium border-[3px] border-black">
                         {user?.name?.charAt(0).toUpperCase() || 'U'}
                     </div>
                 </div>

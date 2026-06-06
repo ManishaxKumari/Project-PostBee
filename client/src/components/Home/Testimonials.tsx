@@ -30,7 +30,7 @@ export default function Testimonials() {
                     {testimonials.map((t) => (
                         <div
                             key={t.name}
-                            className={`${t.bg} ${t.rotate} rounded-3xl border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 flex flex-col gap-4 hover:rotate-0 hover:shadow-[3px_3px_0_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all`}
+                            className={`${t.bg} ${t.rotate} rounded-3xl border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 flex flex-col gap-4 hover:rotate-0 hover:shadow-[3px_3px_0_0_#000] hover:translate-x-0.75 hover:translate-y-0.75 transition-all`}
                         >
                             <div className="flex gap-0.5">
                                 {Array.from({ length: 5 }).map((_, i) => (

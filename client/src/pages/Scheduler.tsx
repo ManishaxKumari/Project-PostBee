@@ -71,7 +71,7 @@ const Scheduler = () => {
     <div className=" mt-20 flex flex-col lg:flex-row gap-6 h-full">
       
       {/* ── Compose panel ── */}
-      <div className="w-full lg:w-[480px] shrink-0">
+      <div className="w-full lg:w-120 shrink-0">
         <div className="bg-white border-[3px] border-black rounded-2xl p-6 shadow-[8px_8px_0_0_#000]">
           <div className="flex items-center gap-2 mb-6">
             <span className="bg-amber-300 border-[3px] border-black px-3 py-1 text-xs font-black uppercase rounded-full shadow-[3px_3px_0_0_#000]">
@@ -198,7 +198,7 @@ const Scheduler = () => {
           <img
             src="./src/assets/newpost.png"
             alt="postbee"
-            className="w-full h-80 md:h-[12rem] object-cover"
+            className="w-full h-80 md:h-48 object-cover"
           />
         </div>
         <span className="hidden md:inline-block absolute -top-3 -right-3 rotate-[8deg] bg-rose-400 border-[3px] border-black px-4 py-1.5 text-sm font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full">
@@ -210,7 +210,7 @@ const Scheduler = () => {
           <div className="flex items-center gap-2.5 px-5 py-4 border-b-[3px] border-black  rounded-2xl bg-sky-300">
             <CalendarDaysIcon className="size-4" />
             <h3 className="font-black uppercase tracking-tight">Upcoming</h3>
-            <span className="ml-auto text-xs font-black bg-white border-[2px] border-black px-2 py-0.5 rounded-full">
+            <span className="ml-auto text-xs font-black bg-white border-2 border-black px-2 py-0.5 rounded-full">
               {scheduled.length}
             </span>
           </div>
@@ -229,7 +229,7 @@ const Scheduler = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       {post.mediaType && (
-                        <span className="text-xs bg-amber-200 border-[2px] border-black px-1.5 py-0.5 rounded-md font-black uppercase">
+                        <span className="text-xs bg-amber-200 border-2 border-black px-1.5 py-0.5 rounded-md font-black uppercase">
                           {post.mediaType}
                         </span>
                       )}
@@ -248,7 +248,7 @@ const Scheduler = () => {
           <div className="flex items-center gap-2.5 px-5 py-4 border-b-[3px]  rounded-2xl border-black bg-emerald-300">
             <SendIcon className="size-4" />
             <h3 className="font-black uppercase tracking-tight">Published</h3>
-            <span className="ml-auto text-xs font-black bg-white border-[2px] border-black px-2 py-0.5 rounded-full">
+            <span className="ml-auto text-xs font-black bg-white border-2 border-black px-2 py-0.5 rounded-full">
               {published.length}
             </span>
           </div>
@@ -267,12 +267,12 @@ const Scheduler = () => {
                     </div>
                     <div className="flex items-center gap-2">
                       {post.mediaType && (
-                        <span className="text-xs bg-amber-200 border-[2px] border-black px-1.5 py-0.5 rounded-md font-black uppercase">
+                        <span className="text-xs bg-amber-200 border-2 border-black px-1.5 py-0.5 rounded-md font-black uppercase">
                           {post.mediaType}
                         </span>
                       )}
                       <span className="text-xs font-black">{new Date(post.updatedAt).toLocaleString()}</span>
-                      <span className="text-xs bg-emerald-300 border-[2px] border-black px-2 py-0.5 rounded-full font-black uppercase">Published</span>
+                      <span className="text-xs bg-emerald-300 border-2 border-black px-2 py-0.5 rounded-full font-black uppercase">Published</span>
                     </div>
                   </div>
                   <p className="text-sm font-bold line-clamp-2 max-w-4/5">{post.content}</p>

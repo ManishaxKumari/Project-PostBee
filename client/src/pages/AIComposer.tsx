@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { dummyGenerationData, PLATFORMS } from "../assets/assets";
+import { PLATFORMS } from "../assets/assets";
 import { ArrowRightIcon, CalendarIcon, ClockIcon, HistoryIcon, Loader2Icon, TimerIcon, Wand2Icon, XIcon } from "lucide-react";
 import api from "../api/axios";
 import toast from "react-hot-toast";
@@ -82,11 +82,11 @@ const AIComposer = () => {
     <div className="max-w-5xl mx-auto space-y-12 pb-20">
       {/* Input Section */}
       <div className="space-y-6 text-center mt-10">
-        <span className="inline-block bg-rose-400 border-[3px] border-black px-4 py-1.5 text-xs font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full rotate-[-2deg]">
+        <span className="inline-block bg-rose-400 border-[3px] border-black px-4 py-1.5 text-xs font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full -rotate-2">
           AI Composer
         </span>
         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
-          What should we <span className="inline-block bg-rose-300 border-[3px] border-black px-3 rotate-[-1deg]">create</span> today?
+          What should we <span className="inline-block bg-rose-300 border-[3px] border-black px-3 -rotate-1">create</span> today?
         </h1>
 
         <div className="relative mt-8">
@@ -102,7 +102,7 @@ const AIComposer = () => {
               className="flex items-center gap-3 bg-amber-200 border-[3px] border-black py-2 px-3 rounded-xl font-black uppercase text-xs shadow-[3px_3px_0_0_#000]"
             >
               <span>AI Image</span>
-              <div className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-[2px] border-black transition-colors ${generateImage ? "bg-emerald-400" : "bg-white"}`}>
+              <div className={`relative inline-flex h-5 w-9 shrink-0 cursor-pointer rounded-full border-2 border-black transition-colors ${generateImage ? "bg-emerald-400" : "bg-white"}`}>
                 <span className={`pointer-events-none size-3 transform translate-y-0.5 rounded-full bg-black transition ${generateImage ? "translate-x-5" : "translate-x-0.5"}`} />
               </div>
             </button>

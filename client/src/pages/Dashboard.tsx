@@ -111,7 +111,7 @@ const Dashboard = () => {
       <div className="bg-white border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000]">
         <div className="flex items-center justify-between px-6 py-4 border-b-[3px] border-black bg-amber-300">
           <h2 className="font-black uppercase tracking-tight text-xl">Recent Activity</h2>
-          <span className="text-xs font-black bg-white border-[2px] border-black px-2 py-0.5 rounded-full">
+          <span className="text-xs font-black bg-white border-2 border-black px-2 py-0.5 rounded-full">
             {activities.length} events
           </span>
         </div>
@@ -133,7 +133,7 @@ const Dashboard = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-xs font-black uppercase px-2 py-0.5 rounded-full bg-emerald-200 border-[2px] border-black">Published</span>
+                    <span className="text-xs font-black uppercase px-2 py-0.5 rounded-full bg-emerald-200 border-2 border-black">Published</span>
                     <span className="text-xs text-black/60 shrink-0 font-bold">{new Date(activity.createdAt).toLocaleString()}</span>
                   </div>
                   <p className="text-sm font-bold">{activity.description}</p>

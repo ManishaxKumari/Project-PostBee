@@ -7,7 +7,7 @@ export default function CTA() {
     return (
         <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
-                <div className="relative rounded-[32px] overflow-hidden p-12 sm:p-20 text-center bg-yellow-400 border-[3px] border-black shadow-[10px_10px_0_0_#000]">
+                <div className="relative rounded-4xl overflow-hidden p-12 sm:p-20 text-center bg-yellow-400 border-[3px] border-black shadow-[10px_10px_0_0_#000]">
                     {/* Grid */}
                     <div
                         className="absolute inset-0 pointer-events-none opacity-90"
@@ -40,13 +40,13 @@ export default function CTA() {
                         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
                             <a
                                 href="#"
-                                className="bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-full px-10 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#fff] hover:shadow-[3px_3px_0_0_#fff] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
+                                className="bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-full px-10 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#fff] hover:shadow-[3px_3px_0_0_#fff] hover:translate-x-0.75 hover:translate-y-0.75 transition-all w-full sm:w-auto justify-center"
                             >
                                 Get Started Free <ArrowRightIcon className="size-4" />
                             </a>
                             <a
                                 href="#pricing"
-                                className="bg-white text-black font-extrabold border-[3px] border-black rounded-full px-10 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
+                                className="bg-white text-black font-extrabold border-[3px] border-black rounded-full px-10 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] hover:translate-x-0.75 hover:translate-y-0.75 transition-all w-full sm:w-auto justify-center"
                             >
                                 View Pricing
                             </a>
