@@ -12,6 +12,8 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@fal-ai/client": "^1.10.1",
+    "@fal-ai/server-proxy": "^1.2.1",
     "@google/genai": "^2.8.0",
     "@zernio/node": "^0.2.222",
     "axios": "^1.16.1",

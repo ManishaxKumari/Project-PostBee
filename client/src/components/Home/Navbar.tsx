@@ -3,6 +3,7 @@ import { ArrowRightIcon } from "lucide-react";
 
 export default function Navbar() {
     return (
+        
         <div className="sticky top-0 z-50 px-4 sm:px-6 pt-4">
             <nav className="max-w-6xl mx-auto bg-white border-[3px] border-black rounded-full shadow-[6px_6px_0_0_#000] px-5 sm:px-6 h-16 flex items-center justify-between">
                 <Link to="/" onClick={() => scrollTo(0, 0)} className="flex items-center gap-2.5">
@@ -29,5 +30,6 @@ export default function Navbar() {
                 </div>
             </nav>
         </div>
+        
     );
 }

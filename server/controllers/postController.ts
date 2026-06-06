@@ -5,7 +5,10 @@ import axios from "axios";
 import { cloudinary } from "../config/cloudinary.js";
 import { Generation } from "../models/Generation.js";
 import { Post } from "../models/Post.js";
-
+import { fal } from "@fal-ai/client";
+fal.config({
+    credentials: process.env.FAL_KEY!,
+});
 // Generate post
 // POST /api/posts/generate
 export const generatePost = async (req: AuthRequest, res: Response): Promise<void> => {
@@ -42,57 +45,42 @@ export const generatePost = async (req: AuthRequest, res: Response): Promise<voi
         } catch (e) {
             content = textResponse.text || "";
         }
-
         let mediaUrl = "";
-        
-        // 2. FIXED: Use Picfinder API to completely bypass shared cloud IP concurrent rate limits (402 blocks)
-        if(generateImage){
-           try {
-                console.log("Generating free image via Picfinder Gateway...");
-                
-                // Keep the prompt string clean of code-breaking symbols
-                const cleanImagePrompt = imagePrompt.replace(/[\*\_]/g, "").trim();
-                console.log("Cleaned Image Prompt for API:", cleanImagePrompt);
 
-                // Picfinder uses a reliable public GET endpoint built for high-concurrency developer test suites
-                const sanitizedPrompt = encodeURIComponent(cleanImagePrompt);
-                const picfinderUrl = `https://image.pollinations.ai/p/${sanitizedPrompt}?width=1024&height=1024&model=flux&seed=${Math.floor(Math.random() * 100000)}`;
+        if (generateImage) {
+            try {
+                console.log("Generating image with Fal AI...");
 
-                // Fetch image binary stream directly
-                const imgResponse = await axios.get(picfinderUrl, {
-                    responseType: "arraybuffer"
-                });
+                const cleanImagePrompt = imagePrompt
+                    .replace(/[\*\_]/g, "")
+                    .trim();
 
-                console.log("Image binary fetched. Streaming to Cloudinary...");
-                const imageBuffer = Buffer.from(imgResponse.data);
-
-                const uploadResult = await new Promise<any>((resolve, reject) => {
-                    const uploadStream = cloudinary.uploader.upload_stream(
-                        { 
-                            folder: "ai-generations",
-                            resource_type: "image"
+                const result = await fal.subscribe(
+                    "fal-ai/flux/dev",
+                    {
+                        input: {
+                            prompt: cleanImagePrompt,
+                            image_size: "square_hd",
+                            num_images: 1,
                         },
-                        (error, result) => {
-                            if (error) {
-                                console.error("Cloudinary upload internal error:", error);
-                                reject(error);
-                            } else {
-                                resolve(result);
-                            }
-                        }
-                    );
-                    uploadStream.end(imageBuffer);
-                });
+                    }
+                );
 
-                mediaUrl = uploadResult.secure_url;
-                console.log("Image successfully uploaded to Cloudinary:", mediaUrl);
-                
-           } catch (err: any) {
-                console.error("Image generation block threw an error:", err.message);
-                if (err?.response?.status) {
-                    console.error("Error Status Code:", err.response.status);
+                console.log("Fal response:", result);
+
+                const imageUrl = result.data.images?.[0]?.url;
+
+                if (!imageUrl) {
+                    throw new Error("No image URL returned from Fal");
                 }
-           } 
+
+                mediaUrl = imageUrl;
+
+                console.log("Generated image URL:", mediaUrl);
+
+            } catch (error: any) {
+                console.error("Fal AI Error:", error);
+            }
         }
 
           // 3. Save generation metadata into MongoDB
