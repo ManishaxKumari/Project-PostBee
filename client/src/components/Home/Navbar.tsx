@@ -6,7 +6,7 @@ export default function Navbar() {
         <div className="sticky top-0 z-50 px-4 sm:px-6 pt-4">
             <nav className="max-w-6xl mx-auto bg-white border-[3px] border-black rounded-full shadow-[6px_6px_0_0_#000] px-5 sm:px-6 h-16 flex items-center justify-between">
                 <Link to="/" onClick={() => scrollTo(0, 0)} className="flex items-center gap-2.5">
-                    <span className="size-9 rounded-full bg-yellow-400 border-[2.5px] border-black flex items-center justify-center text-base">🐝</span>
+                    <img src="/favicon.svg" alt="PostBee logo" className="w-9 h-9 rounded-full" />
                     <span className="text-lg lg:text-xl font-extrabold tracking-tight text-black uppercase">PostBee</span>
                 </Link>
 

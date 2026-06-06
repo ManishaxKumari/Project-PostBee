@@ -11,10 +11,11 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
     const [hovered, setHovered] = useState<string | null>(null)
 
     const navItems = [
+        { name: 'AI Composer', icon: Wand2Icon, path: '/ai-composer' },
         { name: 'Dashboard', icon: LayoutDashboardIcon, path: '/dashboard' },
         { name: 'Accounts', icon: UsersIcon, path: '/accounts' },
         { name: 'Scheduler', icon: CalendarDaysIcon, path: '/schedule' },
-        { name: 'AI Composer', icon: Wand2Icon, path: '/ai-composer' },
+        
     ]
 
     // Suppress unused-prop warnings; props kept for API compatibility with Layout.
@@ -23,7 +24,7 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
 
     return (
         <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-            <nav className="relative flex items-center gap-1 sm:gap-2 bg-white rounded-full shadow-[0_10px_40px_-10px_rgba(0,0,0,0.25)] px-3 py-2 border border-slate-100">
+            <nav className="relative flex items-center gap-1 sm:gap-2 bg-white border-[3px] border-black rounded-full shadow-[0_10px_40px_-10px_rgba(0,0,0,0.25)] px-3 py-2 border border-slate-100">
                 {navItems.map((item) => {
                     const isActive = location.pathname === item.path
                     const showTip = hovered === item.name
@@ -31,7 +32,7 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
                     return (
                         <div key={item.name} className="relative">
                             {showTip && (
-                                <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-slate-800 text-xs rounded-lg shadow-md whitespace-nowrap after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-white">
+                                <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 border-[3px] border-black bg-white text-slate-800 text-xs rounded-lg shadow-md whitespace-nowrap after:content-[''] after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 after:border-4 after:border-transparent after:border-t-white">
                                     {item.name}
                                 </div>
                             )}
@@ -42,7 +43,7 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
                                 onMouseLeave={() => setHovered(null)}
                                 className={`flex items-center justify-center rounded-full transition-all duration-200 ${
                                     isActive
-                                        ? 'size-12 bg-yellow-400 text-white shadow-lg shadow-yellow-400/40 scale-110'
+                                        ? 'size-12 bg-yellow-400 border-[3px] border-black  text-white shadow-lg shadow-yellow-400/40 scale-110'
                                         : 'size-11 text-slate-700 hover:bg-slate-100'
                                 }`}
                             >
@@ -61,11 +62,11 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
                     onMouseLeave={() => setHovered(null)}
                 >
                     {hovered === '__user' && (
-                        <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-slate-800 text-xs rounded-lg shadow-md whitespace-nowrap">
+                        <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 border-[3px] border-black bg-white text-slate-800 text-xs rounded-lg shadow-md whitespace-nowrap">
                             {user?.name || 'Account'}
                         </div>
                     )}
-                    <div className="size-11 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center text-white text-sm font-medium">
+                    <div className="size-11 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center text-white text-sm font-medium border-[3px] border-black">
                         {user?.name?.charAt(0).toUpperCase() || 'U'}
                     </div>
                 </div>
@@ -77,7 +78,7 @@ const Sidebar = ({ isOpen, setIsOpen }: { isOpen: boolean; setIsOpen: (val: bool
                     onMouseLeave={() => setHovered(null)}
                 >
                     {hovered === '__logout' && (
-                        <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 bg-white text-slate-800 text-xs rounded-lg shadow-md whitespace-nowrap">
+                        <div className="absolute -top-11 left-1/2 -translate-x-1/2 px-3 py-1.5 border-[3px] border-black bg-white text-slate-800 text-xs rounded-lg shadow-md whitespace-nowrap">
                             Sign Out
                         </div>
                     )}

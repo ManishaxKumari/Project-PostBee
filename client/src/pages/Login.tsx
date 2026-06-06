@@ -45,15 +45,13 @@ export default function Login() {
             <div className="relative w-full max-w-md">
                 {/* sticker */}
                 <span className="absolute -top-5 -left-3 z-10 rotate-[-8deg] bg-rose-400 border-[3px] border-black px-3 py-1 text-xs font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full">
-                    🐝 buzz in
+                    buzz in
                 </span>
 
                 <div className="bg-white border-[3px] border-black rounded-2xl shadow-[8px_8px_0_0_#000] p-8">
                     <div className="flex flex-col items-center mb-8">
                         <Link to="/" className="flex items-center gap-2">
-                            <span className="border-[3px] border-black bg-amber-400 size-10 flex items-center justify-center rounded-xl text-xl shadow-[3px_3px_0_0_#000]">
-                                🐝
-                            </span>
+                            <img src="/favicon.svg" alt="PostBee logo" className="w-10 h-10 rounded-full object-contain" />
                             <h1 className="text-2xl font-black tracking-tight uppercase">PostBee</h1>
                         </Link>
                         <p className="text-black/70 text-sm mt-2 font-bold">

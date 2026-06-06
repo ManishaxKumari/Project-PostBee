@@ -61,10 +61,10 @@ const Dashboard = () => {
   return (
     <div className="space-y-8">
       {/* Banner */}
-      <div className="w-full relative">
+      {/* <div className="w-full relative">
         <div className="border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000] bg-amber-300">
           <img
-            src="./src/assets/connect.png"
+            src="./src/assets/banner.png"
             alt="postbee"
             className="w-full h-80 md:h-[26rem] object-cover"
           />
@@ -72,10 +72,10 @@ const Dashboard = () => {
         <span className="hidden md:inline-block absolute -top-3 -left-3 rotate-[-6deg] bg-sky-300 border-[3px] border-black px-4 py-1.5 text-sm font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full">
           welcome back 👋
         </span>
-      </div>
+      </div> */}
 
       {/* Bento stat cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 w-full auto-rows-[200px]">
+      <div className=" mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 w-full auto-rows-[200px]">
         {statCards.map((card) => {
           const Icon = card.icon
           return (

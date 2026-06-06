@@ -59,16 +59,16 @@ export default function Hero() {
                         href="#how-it-works"
                         className="bg-white text-black font-extrabold border-[3px] border-black rounded-full px-8 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
                     >
-                        Watch demo
+                        How its works
                     </a>
                 </div>
 
                 {/* Trust line */}
-                <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-black font-bold text-sm">
+                {/* <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-black font-bold text-sm">
                     <span className="inline-flex items-center gap-1.5"><CheckCircle2Icon className="size-4" /> No credit card</span>
                     <span className="inline-flex items-center gap-1.5"><CheckCircle2Icon className="size-4" /> 7 platforms</span>
                     <span className="inline-flex items-center gap-1.5"><CheckCircle2Icon className="size-4" /> AI image gen</span>
-                </div>
+                </div> */}
             </div>
 
             {/* Dashboard mockup */}

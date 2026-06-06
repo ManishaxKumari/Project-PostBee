@@ -14,7 +14,7 @@ export default function Footer() {
                     {/* Brand */}
                     <div className="lg:col-span-2">
                         <Link to="/" onClick={() => scrollTo(0, 0)} className="inline-flex items-center gap-2.5 mb-5">
-                            <span className="size-10 rounded-full bg-yellow-400 border-[2.5px] border-white flex items-center justify-center text-lg">🐝</span>
+                            <img src="/favicon.svg" alt="PostBee logo" className="w-10 h-10 rounded-full bg-yellow-400 border-[2.5px] border-white p-1 object-contain" />
                             <span className="font-black text-2xl uppercase tracking-tight">PostBee</span>
                         </Link>
                         <p className="text-sm font-medium text-white/70 leading-relaxed max-w-xs">

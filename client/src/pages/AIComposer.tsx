@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { PLATFORMS } from "../assets/assets";
+import { dummyGenerationData, PLATFORMS } from "../assets/assets";
 import { ArrowRightIcon, CalendarIcon, ClockIcon, HistoryIcon, Loader2Icon, TimerIcon, Wand2Icon, XIcon } from "lucide-react";
 import api from "../api/axios";
 import toast from "react-hot-toast";
@@ -71,14 +71,22 @@ const AIComposer = () => {
   const toneBg = ["bg-amber-300", "bg-rose-400", "bg-emerald-300", "bg-sky-300", "bg-fuchsia-300"];
 
   return (
+    <div className=" pt-20 border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000]min-h-screen bg-amber-300 flex items-center justify-center p-4"
+            style={{
+                backgroundImage:
+                    "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
+                backgroundSize: "48px 48px",
+                backgroundBlendMode: "soft-light",
+            }}
+        >
     <div className="max-w-5xl mx-auto space-y-12 pb-20">
       {/* Input Section */}
       <div className="space-y-6 text-center mt-10">
         <span className="inline-block bg-rose-400 border-[3px] border-black px-4 py-1.5 text-xs font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full rotate-[-2deg]">
-          🐝 AI Composer
+          AI Composer
         </span>
         <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tight">
-          What should we <span className="inline-block bg-amber-300 border-[3px] border-black px-3 rotate-[-1deg]">create</span> today?
+          What should we <span className="inline-block bg-rose-300 border-[3px] border-black px-3 rotate-[-1deg]">create</span> today?
         </h1>
 
         <div className="relative mt-8">
@@ -256,6 +264,7 @@ const AIComposer = () => {
           </div>
         </div>
       )}
+    </div>
     </div>
   )
 }

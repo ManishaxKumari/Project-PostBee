@@ -73,20 +73,27 @@ const Accounts = () => {
   const connectedIds = accounts.map((a) => a.platform)
 
   return (
+    <div className=" border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000]min-h-full h-full bg-amber-300 flex items-center justify-center p-4"
+            style={{
+                backgroundImage:
+                    "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)",
+                backgroundSize: "48px 48px",
+                backgroundBlendMode: "soft-light",
+            }}>
     <div className="space-y-8">
       {/* Banner */}
-      <div className="w-full relative">
+      {/* <div className="w-full relative">
         <div className="border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000] bg-amber-300">
           <img
             src="./src/assets/connect.png"
             alt="postbee"
-            className="w-full h-80 md:h-[26rem] object-cover"
+            className="w-full h-80 md:h-[20rem] object-cover"
           />
         </div>
         <span className="hidden md:inline-block absolute -top-3 -right-3 rotate-[8deg] bg-rose-400 border-[3px] border-black px-4 py-1.5 text-sm font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full">
           all your hives ⚡
         </span>
-      </div>
+      </div> */}
 
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-white border-[3px] border-black rounded-2xl p-5 shadow-[6px_6px_0_0_#000]">
@@ -114,6 +121,7 @@ const Accounts = () => {
       )}
 
       <AccountList accounts={accounts} onDisconnect={handleDisconnect} />
+    </div>
     </div>
   )
 }

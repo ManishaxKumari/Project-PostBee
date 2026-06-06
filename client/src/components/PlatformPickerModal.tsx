@@ -13,7 +13,7 @@ const PlatformPickerModal = ({connectedIds, connecting, onClose, onConnect} : Pl
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur">
-        <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md border border-slate-100">
+        <div className="bg-white border-[3px] border-black rounded-2xl shadow-2xl w-full max-w-md">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 shadow">
                 <h3 className="text-slate-700">Choose a Platform</h3>
@@ -31,7 +31,7 @@ const PlatformPickerModal = ({connectedIds, connecting, onClose, onConnect} : Pl
                         <button key={p.id}
                         disabled={isConnected || isConnecting}
                         onClick={()=>onConnect(p.id)}
-                        className={`flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all ${isConnected ? "border-amber-300 bg-amber-50 cursor-default" : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-slate-100 cursor-pointer"} ${isConnecting && "opacity-60"}`}>
+                        className={` border-[3px] border-black flex items-center gap-3 p-3.5 rounded-xl text-left transition-all ${isConnected ? "border-amber-300 bg-amber-50 cursor-default" : "border-slate-200 bg-slate-50 hover:border-slate-300 hover:bg-slate-100 cursor-pointer"} ${isConnecting && "opacity-60"}`}>
 
                             {/* Icon */}
                             <div className="p-2">

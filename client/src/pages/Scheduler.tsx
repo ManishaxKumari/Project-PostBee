@@ -68,7 +68,8 @@ const Scheduler = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-6 h-full">
+    <div className=" mt-20 flex flex-col lg:flex-row gap-6 h-full">
+      
       {/* ── Compose panel ── */}
       <div className="w-full lg:w-[480px] shrink-0">
         <div className="bg-white border-[3px] border-black rounded-2xl p-6 shadow-[8px_8px_0_0_#000]">
@@ -191,9 +192,22 @@ const Scheduler = () => {
 
       {/* ── Queue panels ── */}
       <div className="flex-1 flex flex-col gap-6 min-w-0">
+        {/* Banner */}
+      <div className="w-full relative">
+        <div className="border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000] bg-amber-300">
+          <img
+            src="./src/assets/newpost.png"
+            alt="postbee"
+            className="w-full h-80 md:h-[12rem] object-cover"
+          />
+        </div>
+        <span className="hidden md:inline-block absolute -top-3 -right-3 rotate-[8deg] bg-rose-400 border-[3px] border-black px-4 py-1.5 text-sm font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full">
+          Create New Post
+        </span>
+      </div>
         {/* Upcoming */}
-        <div className="bg-white border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000]">
-          <div className="flex items-center gap-2.5 px-5 py-4 border-b-[3px] border-black bg-sky-300">
+        <div className="bg-white border-[3px] border-black rounded-2xl shadow-[8px_8px_0_0_#000]">
+          <div className="flex items-center gap-2.5 px-5 py-4 border-b-[3px] border-black  rounded-2xl bg-sky-300">
             <CalendarDaysIcon className="size-4" />
             <h3 className="font-black uppercase tracking-tight">Upcoming</h3>
             <span className="ml-auto text-xs font-black bg-white border-[2px] border-black px-2 py-0.5 rounded-full">
@@ -205,7 +219,7 @@ const Scheduler = () => {
               <div className="py-10 text-center text-black/60 text-sm font-bold">No posts scheduled yet</div>
             ) : (
               scheduled.map((post) => (
-                <div key={post._id} className="px-5 py-4 hover:bg-amber-50 transition">
+                <div key={post._id} className="px-5 py-4  rounded-2xl hover:bg-amber-50 transition">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex gap-1.5 items-center">
                       {post.platforms.map((pl: string) => {
@@ -230,8 +244,8 @@ const Scheduler = () => {
         </div>
 
         {/* Published */}
-        <div className="bg-white border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000]">
-          <div className="flex items-center gap-2.5 px-5 py-4 border-b-[3px] border-black bg-emerald-300">
+        <div className="bg-white border-[3px] border-black rounded-2xl shadow-[8px_8px_0_0_#000]">
+          <div className="flex items-center gap-2.5 px-5 py-4 border-b-[3px]  rounded-2xl border-black bg-emerald-300">
             <SendIcon className="size-4" />
             <h3 className="font-black uppercase tracking-tight">Published</h3>
             <span className="ml-auto text-xs font-black bg-white border-[2px] border-black px-2 py-0.5 rounded-full">
@@ -243,7 +257,7 @@ const Scheduler = () => {
               <div className="py-10 text-center text-black/60 text-sm font-bold">No published posts yet</div>
             ) : (
               published.map((post) => (
-                <div key={post._id} className="px-5 py-4 hover:bg-amber-50 transition">
+                <div key={post._id} className="px-5 py-4  rounded-2xl hover:bg-amber-50 transition">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex gap-1.5 items-center">
                       {post.platforms.map((pl: string) => {
