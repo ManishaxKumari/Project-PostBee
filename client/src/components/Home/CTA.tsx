@@ -1,82 +1,58 @@
-// import { Link } from "react-router-dom";
-// import { ArrowRightIcon } from "lucide-react";
-
-// export default function CTA() {
-//     return (
-//         <section className="py-20" style={{ background: "#ffffff" }}>
-//             <div className="max-w-6xl mx-auto px-5 sm:px-8">
-//                 <div
-//                     className="relative rounded-3xl overflow-hidden p-14 sm:p-20 text-center"
-//                     style={{
-//                         background: "linear-gradient(145deg, #fff5f5 0%, #fef2f2 100%)",
-//                         border: "1.5px solid rgba(239,68,68,0.12)",
-//                     }}
-//                 >
-//                     {/* Glow blobs */}
-//                     <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,68,68,0.1) 0%, transparent 70%)" }} />
-//                     <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(239,68,68,0.06) 0%, transparent 70%)" }} />
-
-//                     <div className="relative">
-//                         <div className="mb-6 inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/15 text-red-500 text-[11px] font-medium tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full">Ready to grow?</div>
-//                         <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight font-medium text-gray-900">
-//                             Automate your social
-//                             <br />
-//                             <span className="text-red-400 italic">media today</span>
-//                         </h2>
-//                         <p className="mt-6 text-gray-500 max-w-lg mx-auto  text-lg">Join thousands of creators and marketers who trust Scheduler to grow their audience on autopilot.</p>
-
-//                         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-//                             <Link to="/login" className="bg-red-500 text-white rounded-full font-semibold hover:bg-red-600 hover:shadow-[0_8px_24px_rgba(239,68,68,0.35)] inline-flex items-center gap-2 text-[15px] px-10 py-4 w-full sm:w-auto justify-center">
-//                                 Get Started Free <ArrowRightIcon className="size-4" />
-//                             </Link>
-//                             <a href="#pricing" className="bg-transparent text-[#333] border-[1.5px] border-black/10 rounded-full font-medium hover:bg-black/5 hover:border-black/20 inline-flex items-center gap-2 text-[15px] px-10 py-4 w-full sm:w-auto justify-center">
-//                                 View Pricing
-//                             </a>
-//                         </div>
-
-//                         <p className="mt-6 text-xs text-gray-400">No credit card required · Cancel anytime</p>
-//                     </div>
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// }
-
 import { ArrowRightIcon } from "lucide-react";
+
+const gridBg =
+    "linear-gradient(rgba(0,0,0,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px)";
 
 export default function CTA() {
     return (
         <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-5 sm:px-8">
-                <div
-                    className="relative rounded-3xl overflow-hidden p-14 sm:p-20 text-center"
-                    style={{
-                        background: "linear-gradient(145deg, #fffbeb 0%, #fef3c7 100%)",
-                        border: "1.5px solid rgba(234,179,8,0.18)",
-                    }}
-                >
-                    <div className="absolute top-0 right-0 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(234,179,8,0.18) 0%, transparent 70%)" }} />
-                    <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(234,179,8,0.1) 0%, transparent 70%)" }} />
+                <div className="relative rounded-[32px] overflow-hidden p-12 sm:p-20 text-center bg-yellow-400 border-[3px] border-black shadow-[10px_10px_0_0_#000]">
+                    {/* Grid */}
+                    <div
+                        className="absolute inset-0 pointer-events-none opacity-90"
+                        style={{ backgroundImage: gridBg, backgroundSize: "40px 40px" }}
+                    />
+
+                    {/* Sticker chips */}
+                    <div className="hidden sm:flex absolute top-6 left-6 -rotate-12 items-center gap-1.5 bg-[#FF6B6B] text-white text-xs font-extrabold px-3.5 py-1.5 rounded-full border-[2.5px] border-black shadow-[4px_4px_0_0_#000]">
+                        🐝 buzz
+                    </div>
+                    <div className="hidden sm:flex absolute top-6 right-6 rotate-6 items-center gap-1.5 bg-[#6EE7B7] text-black text-xs font-extrabold px-3.5 py-1.5 rounded-full border-[2.5px] border-black shadow-[4px_4px_0_0_#000]">
+                        Ready?
+                    </div>
 
                     <div className="relative">
-                        <div className="mb-6 inline-flex items-center gap-1.5 bg-yellow-500/10 border border-yellow-500/20 text-yellow-700 text-[11px] font-medium tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full">Ready to grow?</div>
-                        <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-tight font-medium text-gray-900">
+                        <div className="mb-6 inline-flex items-center gap-1.5 bg-white border-[2.5px] border-black text-black text-xs font-extrabold tracking-[0.12em] uppercase px-4 py-2 rounded-full shadow-[4px_4px_0_0_#000]">
+                            Ready to grow?
+                        </div>
+                        <h2 className="font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-black tracking-tight">
                             Automate your social
                             <br />
-                            <span className="text-yellow-500 italic">media today</span>
+                            <span className="inline-block bg-black text-yellow-400 px-4 py-1 mt-3 -rotate-1 border-[3px] border-black shadow-[6px_6px_0_0_#fff]">
+                                media today
+                            </span>
                         </h2>
-                        <p className="mt-6 text-gray-500 max-w-lg mx-auto text-lg">Join thousands of creators and marketers who trust PostBee to grow their audience on autopilot.</p>
+                        <p className="mt-6 text-black/80 font-medium max-w-lg mx-auto text-lg">
+                            Join thousands of creators and marketers who trust PostBee to grow their audience on autopilot.
+                        </p>
 
-                        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
-                            <a href="#" className="bg-yellow-500 text-white rounded-full font-semibold hover:bg-yellow-600 hover:shadow-[0_8px_24px_rgba(234,179,8,0.4)] inline-flex items-center gap-2 text-[15px] px-10 py-4 w-full sm:w-auto justify-center transition-all">
+                        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a
+                                href="#"
+                                className="bg-black text-yellow-400 font-extrabold border-[3px] border-black rounded-full px-10 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#fff] hover:shadow-[3px_3px_0_0_#fff] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
+                            >
                                 Get Started Free <ArrowRightIcon className="size-4" />
                             </a>
-                            <a href="#pricing" className="bg-transparent text-[#333] border-[1.5px] border-black/10 rounded-full font-medium hover:bg-black/5 hover:border-black/20 inline-flex items-center gap-2 text-[15px] px-10 py-4 w-full sm:w-auto justify-center transition-all">
+                            <a
+                                href="#pricing"
+                                className="bg-white text-black font-extrabold border-[3px] border-black rounded-full px-10 py-4 inline-flex items-center gap-2 shadow-[6px_6px_0_0_#000] hover:shadow-[3px_3px_0_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all w-full sm:w-auto justify-center"
+                            >
                                 View Pricing
                             </a>
                         </div>
 
-                        <p className="mt-6 text-xs text-gray-400">No credit card required · Cancel anytime</p>
+                        <p className="mt-7 text-xs font-bold text-black/70">No credit card required · Cancel anytime</p>
                     </div>
                 </div>
             </div>

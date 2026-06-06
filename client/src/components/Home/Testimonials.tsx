@@ -1,93 +1,50 @@
-// import { StarIcon } from "lucide-react";
-
-// const testimonials = [
-//     {
-//         name: "Sarah K.",
-//         role: "Marketing Manager",
-//         avatar: "S",
-//         avatarBg: "from-red-400 to-pink-400",
-//         text: "Scheduler has saved our team 10+ hours a week. The AI composer is genuinely impressive — it writes content that sounds like us.",
-//     },
-//     {
-//         name: "Marcus L.",
-//         role: "Indie Creator",
-//         avatar: "M",
-//         avatarBg: "from-violet-400 to-purple-500",
-//         text: "I used to dread posting. Now I queue up a whole week of content in 20 minutes. The smart scheduling feature alone is worth it.",
-//     },
-//     {
-//         name: "Priya D.",
-//         role: "Startup Founder",
-//         avatar: "P",
-//         avatarBg: "from-sky-400 to-blue-500",
-//         text: "Finally a scheduler that's beautiful AND powerful. The clean dashboard makes it easy to see exactly what's going out and when.",
-//     },
-// ];
-
-// export default function Testimonials() {
-//     return (
-//         <section className="py-24 bg-slate-50">
-//             <div className="max-w-6xl mx-auto px-4 sm:px-6">
-//                 <div className="text-center mb-14">
-//                     <div className="mb-6 inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/15 text-red-500 text-[11px] font-medium tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full">
-//                         <StarIcon className="size-3 " />
-//                         Testimonials
-//                     </div>
-//                     <h2 className="font-serif font-medium text-4xl sm:text-5xl leading-tight text-gray-900">
-//                         Loved by <span className="text-red-400 ">creators &amp; teams</span>
-//                     </h2>
-//                     <p className="mt-5 text-gray-500 max-w-md mx-auto">Join thousands of people who automate their social media with Scheduler.</p>
-//                 </div>
-//                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-//                     {testimonials.map((t, i) => (
-//                         <div key={i} className="bg-white rounded-2xl border border-slate-100 hover:border-slate-200 hover:shadow-lg hover:shadow-slate-100 p-6 transition-all flex flex-col gap-4">
-//                             <p className="text-slate-600 text-sm leading-relaxed flex-1">"{t.text}"</p>
-//                             <div className="flex items-center gap-3 pt-2 border-t border-slate-100">
-//                                 <div className={`size-9 rounded-full bg-linear-to-br ${t.avatarBg} flex items-center justify-center text-white text-sm font-bold shrink-0`}>{t.avatar}</div>
-//                                 <div>
-//                                     <div className="text-sm font-medium text-slate-900">{t.name}</div>
-//                                     <div className="text-xs text-slate-400">{t.role}</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// }
-
 import { StarIcon } from "lucide-react";
 
 const testimonials = [
-    { name: "Sarah K.", role: "Marketing Manager", avatar: "S", avatarBg: "from-yellow-400 to-amber-500", text: "PostBee has saved our team 10+ hours a week. The AI composer is genuinely impressive — it writes content that sounds like us." },
-    { name: "Marcus L.", role: "Indie Creator", avatar: "M", avatarBg: "from-amber-400 to-orange-500", text: "I used to dread posting. Now I queue up a whole week of content in 20 minutes. The smart scheduling feature alone is worth it." },
-    { name: "Priya D.", role: "Startup Founder", avatar: "P", avatarBg: "from-yellow-500 to-amber-600", text: "Finally a scheduler that's beautiful AND powerful. The clean dashboard makes it easy to see exactly what's going out and when." },
+    { name: "Sarah K.", role: "Marketing Manager", avatar: "S", bg: "bg-yellow-400", rotate: "-rotate-2", text: "PostBee has saved our team 10+ hours a week. The AI composer is genuinely impressive — it writes content that sounds like us." },
+    { name: "Marcus L.", role: "Indie Creator", avatar: "M", bg: "bg-white", rotate: "rotate-1", text: "I used to dread posting. Now I queue up a whole week of content in 20 minutes. The smart scheduling feature alone is worth it." },
+    { name: "Priya D.", role: "Startup Founder", avatar: "P", bg: "bg-[#6EE7B7]", rotate: "-rotate-1", text: "Finally a scheduler that's beautiful AND powerful. The clean dashboard makes it easy to see exactly what's going out and when." },
 ];
 
 export default function Testimonials() {
     return (
-        <section className="py-24 bg-amber-50/60">
+        <section className="py-24 bg-[#FFFBEA] border-y-[3px] border-black">
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
                 <div className="text-center mb-14">
-                    <div className="mb-6 inline-flex items-center gap-1.5 bg-yellow-500/10 border border-yellow-500/20 text-yellow-700 text-[11px] font-medium tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full">
-                        <StarIcon className="size-3" />
+                    <div className="mb-6 inline-flex items-center gap-1.5 bg-[#FF6B6B] text-white border-[2.5px] border-black text-xs font-extrabold tracking-[0.12em] uppercase px-4 py-2 rounded-full shadow-[4px_4px_0_0_#000]">
+                        <StarIcon className="size-3.5" />
                         Testimonials
                     </div>
-                    <h2 className="font-serif font-medium text-4xl sm:text-5xl leading-tight text-gray-900">
-                        Loved by <span className="text-yellow-500">creators &amp; teams</span>
+                    <h2 className="font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-black tracking-tight">
+                        Loved by{" "}
+                        <span className="inline-block bg-yellow-400 px-3 py-1 -rotate-1 border-[3px] border-black shadow-[6px_6px_0_0_#000]">
+                            creators &amp; teams
+                        </span>
                     </h2>
-                    <p className="mt-5 text-gray-500 max-w-md mx-auto">Join thousands of people who automate their social media with PostBee.</p>
+                    <p className="mt-6 text-black/70 font-medium max-w-md mx-auto">
+                        Join thousands of people who automate their social media with PostBee.
+                    </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {testimonials.map((t, i) => (
-                        <div key={i} className="bg-white rounded-2xl border border-amber-100 hover:border-amber-200 hover:shadow-lg hover:shadow-amber-100 p-6 transition-all flex flex-col gap-4">
-                            <p className="text-slate-600 text-sm leading-relaxed flex-1">"{t.text}"</p>
-                            <div className="flex items-center gap-3 pt-2 border-t border-amber-100">
-                                <div className={`size-9 rounded-full bg-gradient-to-br ${t.avatarBg} flex items-center justify-center text-white text-sm font-bold shrink-0`}>{t.avatar}</div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {testimonials.map((t) => (
+                        <div
+                            key={t.name}
+                            className={`${t.bg} ${t.rotate} rounded-3xl border-[3px] border-black shadow-[6px_6px_0_0_#000] p-6 flex flex-col gap-4 hover:rotate-0 hover:shadow-[3px_3px_0_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all`}
+                        >
+                            <div className="flex gap-0.5">
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                    <StarIcon key={i} className="size-4 fill-black text-black" />
+                                ))}
+                            </div>
+                            <p className="text-black font-medium leading-relaxed flex-1">"{t.text}"</p>
+                            <div className="flex items-center gap-3 pt-3 border-t-[2.5px] border-black/80">
+                                <div className="size-10 rounded-full bg-black text-yellow-400 border-[2.5px] border-black flex items-center justify-center font-black">
+                                    {t.avatar}
+                                </div>
                                 <div>
-                                    <div className="text-sm font-medium text-slate-900">{t.name}</div>
-                                    <div className="text-xs text-slate-400">{t.role}</div>
+                                    <div className="text-sm font-black text-black">{t.name}</div>
+                                    <div className="text-xs font-bold text-black/70">{t.role}</div>
                                 </div>
                             </div>
                         </div>

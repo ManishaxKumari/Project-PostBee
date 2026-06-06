@@ -1,74 +1,33 @@
-// import { Link } from "react-router-dom";
-// import { ArrowRightIcon } from "lucide-react";
-// import { useAuth } from "../../context/AuthContext";
-
-// export default function Navbar() {
-//     const { user } = useAuth();
-
-//     return (
-//         <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
-//             <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-//                 <Link to="/" onClick={() => scrollTo(0, 0)} className="flex items-center gap-2 ">
-//                     <img src="/logo.svg" alt="logo" className="size-7" />
-//                     <span className="text-xl lg:text-2xl font-medium font-serif text-slate-800">PostBee</span>
-//                 </Link>
-//                 <div className="hidden md:flex items-center gap-8 text-sm text-slate-500">
-//                     <a href="#features" className="hover:text-slate-900">
-//                         Features
-//                     </a>
-//                     <a href="#how-it-works" className="hover:text-slate-900">
-//                         How it works
-//                     </a>
-//                     <a href="#pricing" className="hover:text-slate-900">
-//                         Pricing
-//                     </a>
-//                 </div>
-
-//                 {user ? (
-//                     <Link to="/dashboard" className="flex items-center gap-1.5 text-sm font-medium bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow-sm hover:shadow-red-200 hover:shadow-md">
-//                         Go to Dashboard <ArrowRightIcon className="size-3.5" />
-//                     </Link>
-//                 ) : (
-//                     <div className="flex items-center gap-3">
-//                         <Link to="/login" className="text-sm text-slate-600 hover:text-slate-900 hidden sm:block">
-//                             Sign In
-//                         </Link>
-//                         <Link to="/login" className="flex items-center gap-1.5 text-sm bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow-sm hover:shadow-yellow-200 hover:shadow-md">
-//                             Get Started <ArrowRightIcon className="size-3.5" />
-//                         </Link>
-//                     </div>
-//                 )}
-//             </div>
-//         </nav>
-//     );
-// }
-
-
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "lucide-react";
 
 export default function Navbar() {
     return (
-        <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-amber-100">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-                <Link to="/" onClick={() => scrollTo(0, 0)} className="flex items-center gap-2">
-                    {/* <span className="text-2xl">🐝</span> */}
-                    <span className="text-xl lg:text-2xl font-medium font-serif text-slate-800">PostBee</span>
+        <div className="sticky top-0 z-50 px-4 sm:px-6 pt-4">
+            <nav className="max-w-6xl mx-auto bg-white border-[3px] border-black rounded-full shadow-[6px_6px_0_0_#000] px-5 sm:px-6 h-16 flex items-center justify-between">
+                <Link to="/" onClick={() => scrollTo(0, 0)} className="flex items-center gap-2.5">
+                    <span className="size-9 rounded-full bg-yellow-400 border-[2.5px] border-black flex items-center justify-center text-base">🐝</span>
+                    <span className="text-lg lg:text-xl font-extrabold tracking-tight text-black uppercase">PostBee</span>
                 </Link>
-                <div className="hidden md:flex items-center gap-8 text-sm text-slate-500">
-                    <a href="#features" className="hover:text-slate-900">Features</a>
-                    <a href="#how-it-works" className="hover:text-slate-900">How it works</a>
-                    <a href="#pricing" className="hover:text-slate-900">Pricing</a>
+
+                <div className="hidden md:flex items-center gap-8 text-sm font-bold text-black">
+                    <a href="#features" className="hover:text-yellow-600 transition-colors">Features</a>
+                    <a href="#how-it-works" className="hover:text-yellow-600 transition-colors">How it works</a>
+                    <a href="#pricing" className="hover:text-yellow-600 transition-colors">Pricing</a>
                 </div>
+
                 <div className="flex items-center gap-3">
-                    <Link to="/login" className="text-sm text-slate-600 hover:text-slate-900 hidden sm:block">
+                    <Link to="/login" className="text-sm font-bold text-black hover:underline hidden sm:block">
                         Sign In
                     </Link>
-                    <Link to="/login" className="flex items-center gap-1.5 text-sm bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full shadow-sm hover:shadow-yellow-200 hover:shadow-md">
-                        Get Started <ArrowRightIcon className="size-3.5" />
+                    <Link
+                        to="/login"
+                        className="flex items-center gap-1.5 text-sm font-bold bg-[#FF6B6B] text-white border-[2.5px] border-black px-4 py-2 rounded-full shadow-[4px_4px_0_0_#000] hover:shadow-[2px_2px_0_0_#000] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                    >
+                        Start free <ArrowRightIcon className="size-3.5" />
                     </Link>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
     );
 }
