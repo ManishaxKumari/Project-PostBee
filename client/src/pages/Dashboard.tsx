@@ -1,19 +1,19 @@
-import { ActivityIcon, CheckCircleIcon, ClockIcon, SendIcon, Share2Icon, TrendingUpIcon } from "lucide-react"
+import { ActivityIcon, CheckCircleIcon, ClockIcon, SendIcon, Share2Icon } from "lucide-react"
 import { useEffect, useState } from "react"
 import api from "../api/axios"
 
-
-
 const Dashboard = () => {
-
-  const [stats, setStats] = useState({scheduled: 0, published: 0, connectedAccounts: 0})
+  const [stats, setStats] = useState({ scheduled: 0, published: 0, connectedAccounts: 0 })
   const [activities, setActivities] = useState<any[]>([])
 
-  useEffect(()=>{
+  useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const [postsRes, accountsRes, activityRes] = await Promise.all([api.get("/api/posts"), api.get("/api/accounts"), api.get("/api/activity")])
-
+        const [postsRes, accountsRes, activityRes] = await Promise.all([
+          api.get("/api/posts"),
+          api.get("/api/accounts"),
+          api.get("/api/activity"),
+        ])
         const posts = postsRes.data;
         setStats({
           scheduled: posts.filter((p: any) => p.status === 'scheduled').length,
@@ -26,92 +26,123 @@ const Dashboard = () => {
       }
     };
     fetchDashboardData();
-  },[])
+  }, [])
 
   const statCards = [
     {
-      label: "Scheduled Posts",
+      title: "Scheduling",
       value: stats.scheduled,
+      label: "scheduled posts",
+      description: "Plan and queue your posts now — we'll publish them at the perfect time across every channel.",
       icon: ClockIcon,
-      trend: "+2 today",
+      bg: "bg-amber-300",
+      span: "lg:col-span-7 lg:row-span-2",
     },
     {
-      label: "Published Posts",
+      title: "Published",
       value: stats.published,
+      label: "posts shipped",
+      description: "Everything you've sent live, in one feed.",
       icon: CheckCircleIcon,
-      trend: "All time",
+      bg: "bg-emerald-300",
+      span: "lg:col-span-5",
     },
     {
-      label: "Connected Accounts",
+      title: "Accounts",
       value: stats.connectedAccounts,
+      label: "connected",
+      description: "All your social profiles managed from a single dashboard.",
       icon: Share2Icon,
-      trend: "Active",
+      bg: "bg-rose-400",
+      span: "lg:col-span-5",
     },
   ]
 
   return (
     <div className="space-y-8">
-      {/* Welcome bar */}
-      <div>
-        <h2 className="text-2xl text-slate-900">Good morning! 👋</h2>
-        <p className="text-slate-500 text-sm mt-0.5">Here's what's happening with your social accounts today.</p>
-      </div>
+      {/* Banner */}
+      {/* <div className="w-full relative">
+        <div className="border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000] bg-amber-300">
+          <img
+            src="./src/assets/banner.png"
+            alt="postbee"
+            className="w-full h-80 md:h-[26rem] object-cover"
+          />
+        </div>
+        <span className="hidden md:inline-block absolute -top-3 -left-3 rotate-[-6deg] bg-sky-300 border-[3px] border-black px-4 py-1.5 text-sm font-black uppercase shadow-[4px_4px_0_0_#000] rounded-full">
+          welcome back 👋
+        </span>
+      </div> */}
 
-      {/* Stat cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {statCards.map((card)=>(
-          <div key={card.label} className="bg-white hover:bg-red-50 relative border border-slate-200 rounded-2xl p-5 hover:border-red-200 transition-all">
-            <div className="flex items-center justify-between mb-4">
-
-              <div className="text-3xl font-medium text-slate-800 tabular-nums">{card.value}</div>
-
-              <div className="text-xs absolute right-4 top-4 text-red-500 flex items-center gap-1">
-                <TrendingUpIcon className="size-3"/>
-                {card.trend}
+      {/* Bento stat cards */}
+      <div className=" mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5 w-full auto-rows-[200px]">
+        {statCards.map((card) => {
+          const Icon = card.icon
+          return (
+            <div
+              key={card.title}
+              className={`${card.bg} ${card.span} border-[3px] border-black rounded-3xl p-6 flex flex-col justify-between relative overflow-hidden shadow-[8px_8px_0_0_#000] hover:-translate-y-1 hover:shadow-[10px_10px_0_0_#000] transition`}
+            >
+              <div className="flex items-start justify-between">
+                <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-black">{card.title}</h3>
+                <div className="size-12 border-[3px] border-black rounded-xl bg-white flex items-center justify-center shrink-0 shadow-[3px_3px_0_0_#000]">
+                  <Icon className="size-6 text-black" />
+                </div>
               </div>
-
+              <div className="flex items-end justify-between gap-4">
+                <p className="text-sm md:text-base text-black/80 font-bold max-w-sm">
+                  {card.description}
+                </p>
+                <div className="text-right shrink-0">
+                  <div className="text-5xl md:text-6xl font-black text-black tabular-nums leading-none">
+                    {card.value}
+                  </div>
+                  <div className="mt-1 text-xs font-black text-black uppercase tracking-wide">
+                    {card.label}
+                  </div>
+                </div>
+              </div>
             </div>
-            <p className="text-sm text-slate-500 mt-1">{card.label}</p>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
       {/* Activity Feed */}
-      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-            <h2 className="text-slate-900">Recent Activity</h2>
-            <span className="text-sm text-slate-400">{activities.length} events</span>
+      <div className="bg-white border-[3px] border-black rounded-2xl overflow-hidden shadow-[8px_8px_0_0_#000]">
+        <div className="flex items-center justify-between px-6 py-4 border-b-[3px] border-black bg-amber-300">
+          <h2 className="font-black uppercase tracking-tight text-xl">Recent Activity</h2>
+          <span className="text-xs font-black bg-white border-2 border-black px-2 py-0.5 rounded-full">
+            {activities.length} events
+          </span>
         </div>
 
         {activities.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 px-6">
-            <div className="size-12 bg-slate-100 rounded-xl flex items-center justify-center mb-3">
-              <ActivityIcon className="size-6 text-slate-400"/>
+            <div className="size-14 bg-amber-200 border-[3px] border-black rounded-xl flex items-center justify-center mb-3 shadow-[4px_4px_0_0_#000]">
+              <ActivityIcon className="size-6 text-black" />
             </div>
-            <p className="text-slate-500">No activity yet</p>
-            <p className="text-slate-400 text-sm mt-1">Connect accounts and schedule posts to see events here.</p>
+            <p className="font-black uppercase">No activity yet</p>
+            <p className="text-black/60 text-sm mt-1 font-bold">Connect accounts and schedule posts to see events here.</p>
           </div>
         ) : (
-          <div className="divide-y divide-slate-50">
-            {activities.map((activity)=>(
-              <div key={activity._id} className="flex items-start gap-4 px-6 py-4 hover:bg-slate-50/50 transition-colors">
-                <div className="size-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 bg-zinc-100 text-zinc-600">
-                  <SendIcon className="size-4" />
+          <div className="divide-y-[3px] divide-black">
+            {activities.map((activity) => (
+              <div key={activity._id} className="flex items-start gap-4 px-6 py-4 hover:bg-amber-50 transition-colors">
+                <div className="size-10 border-[3px] border-black rounded-xl flex items-center justify-center shrink-0 mt-0.5 bg-emerald-300 shadow-[3px_3px_0_0_#000]">
+                  <SendIcon className="size-4 text-black" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-600">Published</span>
-                    <span className="text-xs text-slate-400 shrink-0">{new Date(activity.createdAt).toLocaleString()}</span>
+                    <span className="text-xs font-black uppercase px-2 py-0.5 rounded-full bg-emerald-200 border-2 border-black">Published</span>
+                    <span className="text-xs text-black/60 shrink-0 font-bold">{new Date(activity.createdAt).toLocaleString()}</span>
                   </div>
-                    <p className="text-sm text-slate-600">{activity.description}</p>
+                  <p className="text-sm font-bold">{activity.description}</p>
                 </div>
               </div>
             ))}
-
           </div>
         )}
       </div>
-
     </div>
   )
 }

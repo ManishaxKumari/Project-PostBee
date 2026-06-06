@@ -6,37 +6,6 @@ import { cloudinary } from "../config/cloudinary.js";
 import { Generation } from "../models/Generation.js";
 import { Post } from "../models/Post.js";
 
-// Helper to poll Leonardo.ai
-
-const pollLeonardoJob = async (generationId: string, apiKey: string) : Promise<string>=>{
-    const maxRetries = 20;
-    const delay = 5000;
-
-    for(let i = 0; i < maxRetries; i++){
-        try {
-           const response = await axios.get(`https://cloud.leonardo.ai/api/rest/v1/generations/${generationId}`, {headers: {
-            accept: "application/json", authorization: `Bearer ${apiKey}`
-           }}) 
-
-           const generation = response.data.generations_by_pk;
-           if(generation.status === "COMPLETE"){
-            if(generation.generated_images && generation.generated_images.length > 0){
-                return generation.generated_images[0].url;
-            }
-            throw new Error("Generation complete but no images found.")
-           }
-           if(generation.status === "FAILED"){
-            throw new Error("Leonardo.ai generation failed.")
-           }
-        } catch (err: any) {
-            console.error("Polling error:", err?.response?.data || err.message);
-        }
-
-        await new Promise((resolve)=> setTimeout(resolve, delay));
-    }
-    throw new Error("Leonardo.ai generation timed out.")
-}
-
 // Generate post
 // POST /api/posts/generate
 export const generatePost = async (req: AuthRequest, res: Response): Promise<void> => {
@@ -49,9 +18,9 @@ export const generatePost = async (req: AuthRequest, res: Response): Promise<voi
             return;
         }
 
-        const ai = new GoogleGenAI({apiKey});
+        const ai = new GoogleGenAI({ apiKey: apiKey });
 
-        // Generate Text
+        // 1. Generate Text using Gemini
         const textResponse = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: `Generate a social media post based on this prompt: "${prompt}". 
@@ -71,52 +40,62 @@ export const generatePost = async (req: AuthRequest, res: Response): Promise<voi
             content = data.content;
             imagePrompt = data.imagePrompt;
         } catch (e) {
-            content = textResponse.text || ""
+            content = textResponse.text || "";
         }
 
         let mediaUrl = "";
+        
+        // 2. FIXED: Use Picfinder API to completely bypass shared cloud IP concurrent rate limits (402 blocks)
         if(generateImage){
            try {
-            const leonardoKey = process.env.LEONARDO_API_KEY;
-            if(leonardoKey){
-                // Use Leonardo.ai for image generation
-                const leoResponse = await axios.post(
-                    "https://cloud.leonardo.ai/api/rest/v2/generations",
-                    {
-                        "public": false,
-                        "model": "gpt-image-2",
-                        "parameters": {
-                            "quality": "LOW",
-                            "prompt": imagePrompt,
-                            "quantity": 1,
-                            "width": 1024,
-                            "height": 1024,
-                            "prompt_enhance": "OFF"
-                        }
-                    },{
-                        headers:{
-                            accept: "application/json",
-                            authorization: `Bearer ${leonardoKey}`,
-                            "content-type": "application/json",
-                        }
-                    }
-                )
+                console.log("Generating free image via Picfinder Gateway...");
+                
+                // Keep the prompt string clean of code-breaking symbols
+                const cleanImagePrompt = imagePrompt.replace(/[\*\_]/g, "").trim();
+                console.log("Cleaned Image Prompt for API:", cleanImagePrompt);
 
-                const generationId = leoResponse.data.generate.generationId;
-                const tempUrl = await pollLeonardoJob(generationId, leonardoKey);
+                // Picfinder uses a reliable public GET endpoint built for high-concurrency developer test suites
+                const sanitizedPrompt = encodeURIComponent(cleanImagePrompt);
+                const picfinderUrl = `https://image.pollinations.ai/p/${sanitizedPrompt}?width=1024&height=1024&model=flux&seed=${Math.floor(Math.random() * 100000)}`;
 
-                // Upload to Cloudinary for persistence
-                const uploadResult = await cloudinary.uploader.upload(tempUrl, {
-                    folder: "ai-generations",
+                // Fetch image binary stream directly
+                const imgResponse = await axios.get(picfinderUrl, {
+                    responseType: "arraybuffer"
                 });
+
+                console.log("Image binary fetched. Streaming to Cloudinary...");
+                const imageBuffer = Buffer.from(imgResponse.data);
+
+                const uploadResult = await new Promise<any>((resolve, reject) => {
+                    const uploadStream = cloudinary.uploader.upload_stream(
+                        { 
+                            folder: "ai-generations",
+                            resource_type: "image"
+                        },
+                        (error, result) => {
+                            if (error) {
+                                console.error("Cloudinary upload internal error:", error);
+                                reject(error);
+                            } else {
+                                resolve(result);
+                            }
+                        }
+                    );
+                    uploadStream.end(imageBuffer);
+                });
+
                 mediaUrl = uploadResult.secure_url;
-            }
+                console.log("Image successfully uploaded to Cloudinary:", mediaUrl);
+                
            } catch (err: any) {
-                console.error("Image generation failed:", err);
+                console.error("Image generation block threw an error:", err.message);
+                if (err?.response?.status) {
+                    console.error("Error Status Code:", err.response.status);
+                }
            } 
         }
 
-         // Save generation to DB
+          // 3. Save generation metadata into MongoDB
           const generation = await Generation.create({
             user: req.user._id,
             prompt,
@@ -124,15 +103,14 @@ export const generatePost = async (req: AuthRequest, res: Response): Promise<voi
             mediaUrl,
             mediaType: mediaUrl ? "image" : undefined,
             tone
-          })
+          });
 
-          res.json(generation)
+          res.json(generation);
         
     } catch (error: any) {
         res.status(500).json({ message: error?.message || "Server error" });
     }
 }
-
 
 // Get generations
 // GET /api/posts/generations
@@ -145,7 +123,6 @@ export const getGenerations = async (req: AuthRequest, res: Response): Promise<v
     }
 }
 
-
 // Get posts
 // GET /api/posts
 export const getPosts = async (req: AuthRequest, res: Response): Promise<void> => {
@@ -157,14 +134,12 @@ export const getPosts = async (req: AuthRequest, res: Response): Promise<void> =
     }
 }
 
-
 // Schedule post
 // POST /api/posts
 export const schedulePost = async (req: AuthRequest, res: Response): Promise<void> => {
     try {
         const { content, platforms, scheduledFor, status } = req.body;
 
-        // Parse platforms if it comes as a stringified array from FormData
         let parsedPlatforms = platforms;
         if(typeof platforms === "string"){
             try {

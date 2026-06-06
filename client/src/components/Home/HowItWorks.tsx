@@ -1,84 +1,47 @@
-// import { ArrowRightIcon, CheckCircleIcon } from "lucide-react";
-
-// const steps = [
-//     { step: "01", title: "Connect Your Accounts", description: "Link your social profiles in seconds. We support Twitter, LinkedIn, Facebook, and Instagram." },
-//     { step: "02", title: "Create or Generate Content", description: "Write your own post or let our AI craft a caption and image based on your prompt." },
-//     { step: "03", title: "Schedule & Publish", description: "Pick a time, select your platforms, and hit schedule. We handle publishing automatically." },
-// ];
-
-// export default function HowItWorks() {
-//     return (
-//         <section id="how-it-works" className="py-24 bg-white">
-//             <div className="max-w-4xl mx-auto px-4 sm:px-6">
-//                 <div className="text-center mb-16">
-//                     <div className="mb-6 inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/15 text-red-500 text-[11px] font-medium tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full">
-//                         <CheckCircleIcon className="size-3" />
-//                         Simple setup
-//                     </div>
-//                     <h2 className="font-serif font-medium text-4xl sm:text-5xl leading-tight text-gray-900">
-//                         Up and running in <span className="text-red-400 italic">minutes</span>
-//                     </h2>
-//                     <p className="mt-5 text-gray-500 max-w-lg mx-auto leading-relaxed">No complicated onboarding, no steep learning curve. Just connect, create, and grow.</p>
-//                 </div>
-
-//                 <div className="space-y-6">
-//                     {steps.map((s, i) => (
-//                         <div key={s.step} className="flex gap-6 items-start">
-//                             <div className="shrink-0 size-12 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center">
-//                                 <span className="text-sm font-medium text-red-500">{s.step}</span>
-//                             </div>
-//                             <div className="pt-1">
-//                                 <h3 className=" text-slate-900 mb-1">{s.title}</h3>
-//                                 <p className="text-slate-500 text-sm leading-relaxed">{s.description}</p>
-//                             </div>
-//                             {i < steps.length - 1 && (
-//                                 <div className="hidden sm:block ml-auto shrink-0 self-center">
-//                                     <ArrowRightIcon className="size-4 text-slate-200" />
-//                                 </div>
-//                             )}
-//                         </div>
-//                     ))}
-//                 </div>
-//             </div>
-//         </section>
-//     );
-// }
-
 import { ArrowRightIcon, CheckCircleIcon } from "lucide-react";
 
 const steps = [
-    { step: "01", title: "Connect Your Accounts", description: "Link your social profiles in seconds. We support Twitter, LinkedIn, Facebook, and Instagram." },
-    { step: "02", title: "Create or Generate Content", description: "Write your own post or let our AI craft a caption and image based on your prompt." },
-    { step: "03", title: "Schedule & Publish", description: "Pick a time, select your platforms, and hit schedule. We handle publishing automatically." },
+    { step: "01", title: "Connect Your Accounts", description: "Link your social profiles in seconds. We support Twitter, LinkedIn, Facebook, and Instagram.", bg: "bg-yellow-400" },
+    { step: "02", title: "Create or Generate Content", description: "Write your own post or let our AI craft a caption and image based on your prompt.", bg: "bg-[#6EE7B7]" },
+    { step: "03", title: "Schedule & Publish", description: "Pick a time, select your platforms, and hit schedule. We handle publishing automatically.", bg: "bg-[#FF6B6B] text-white" },
 ];
 
 export default function HowItWorks() {
     return (
         <section id="how-it-works" className="py-24 bg-white">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6">
                 <div className="text-center mb-16">
-                    <div className="mb-6 inline-flex items-center gap-1.5 bg-yellow-500/10 border border-yellow-500/20 text-yellow-700 text-[11px] font-medium tracking-[0.06em] uppercase px-3.5 py-1.5 rounded-full">
-                        <CheckCircleIcon className="size-3" />
+                    <div className="mb-6 inline-flex items-center gap-1.5 bg-yellow-400 border-[2.5px] border-black text-black text-xs font-extrabold tracking-[0.12em] uppercase px-4 py-2 rounded-full shadow-[4px_4px_0_0_#000]">
+                        <CheckCircleIcon className="size-3.5" />
                         Simple setup
                     </div>
-                    <h2 className="font-serif font-medium text-4xl sm:text-5xl leading-tight text-gray-900">
-                        Up and running in <span className="text-yellow-500 italic">minutes</span>
+                    <h2 className="font-black text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-black tracking-tight">
+                        Up and running in{" "}
+                        <span className="inline-block bg-[#FF6B6B] text-white px-3 py-1 rotate-1 border-[3px] border-black shadow-[6px_6px_0_0_#000]">
+                            minutes
+                        </span>
                     </h2>
-                    <p className="mt-5 text-gray-500 max-w-lg mx-auto leading-relaxed">No complicated onboarding, no steep learning curve. Just connect, create, and grow.</p>
+                    <p className="mt-6 text-black/70 font-medium max-w-lg mx-auto">
+                        No complicated onboarding, no steep learning curve. Just connect, create, and grow.
+                    </p>
                 </div>
+
                 <div className="space-y-6">
                     {steps.map((s, i) => (
-                        <div key={s.step} className="flex gap-6 items-start">
-                            <div className="shrink-0 size-12 rounded-2xl bg-yellow-50 border border-yellow-100 flex items-center justify-center">
-                                <span className="text-sm font-medium text-yellow-600">{s.step}</span>
+                        <div
+                            key={s.step}
+                            className={`${s.bg} flex flex-col sm:flex-row gap-5 sm:items-center p-6 rounded-3xl border-[3px] border-black shadow-[6px_6px_0_0_#000]`}
+                        >
+                            <div className="shrink-0 size-14 rounded-2xl bg-black text-yellow-400 border-[2.5px] border-black flex items-center justify-center font-black text-lg">
+                                {s.step}
                             </div>
-                            <div className="pt-1">
-                                <h3 className="text-slate-900 mb-1 font-medium">{s.title}</h3>
-                                <p className="text-slate-500 text-sm leading-relaxed">{s.description}</p>
+                            <div className="flex-1">
+                                <h3 className="font-black text-xl mb-1 tracking-tight">{s.title}</h3>
+                                <p className="text-sm font-medium leading-relaxed opacity-85">{s.description}</p>
                             </div>
                             {i < steps.length - 1 && (
-                                <div className="hidden sm:block ml-auto shrink-0 self-center">
-                                    <ArrowRightIcon className="size-4 text-amber-200" />
+                                <div className="hidden sm:flex shrink-0 size-10 rounded-full bg-white border-[2.5px] border-black items-center justify-center">
+                                    <ArrowRightIcon className="size-4 text-black" />
                                 </div>
                             )}
                         </div>
